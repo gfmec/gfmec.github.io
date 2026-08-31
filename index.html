@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geodesic Flow Matching for Multi-Robot Ergodic Coverage on 3D Mesh Surfaces</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐇</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="webgl-warn">WebGL is not available in this browser — the interactive viewers cannot start.</div>
+<canvas id="gl"></canvas>
+
+<div class="toolbar">
+  <span class="brand">Geodesic Flow Matching on Mesh Surfaces</span>
+  <span class="hint">drag&nbsp;·&nbsp;rotate&nbsp;&nbsp;/&nbsp;&nbsp;scroll&nbsp;·&nbsp;zoom&nbsp;&nbsp;/&nbsp;&nbsp;right-drag&nbsp;·&nbsp;pan&nbsp;&nbsp;/&nbsp;&nbsp;double-click&nbsp;·&nbsp;reset</span>
+  <button id="btn-play">▶ Replay trajectories</button>
+  <button id="btn-reset">⟲ Reset views</button>
+</div>
+
+<header class="hero">
+  <h1>Geodesic Flow Matching for Multi-Robot<br>Ergodic Coverage on 3D Mesh Surfaces</h1>
+  <div class="authors">Anonymous Authors</div>
+  <div class="venue">Under double-blind review</div>
+  <div class="links">
+    <a class="ghost">📄 Paper (PDF) — under review</a>
+    <a class="ghost" href="#">&lt;/&gt; Code — after review</a>
+  </div>
+</header>
+
+<div class="hero-viewer">
+  <div class="viewport" id="hero-view"></div>
+  <div class="caption">
+    Uniform inspection of an Eiffel Tower scan by <b>N&nbsp;=&nbsp;3</b> robots.
+    Every scene on this page is live — drag to rotate, scroll to zoom.
+    Colored curves are the robots' off-surface paths; dots mark their starts.
+  </div>
+</div>
+
+<section class="abstract">
+  <h2>Abstract</h2>
+  <p>
+    Multi-agent ergodic coverage seeks trajectories whose collective
+    visitation statistics match a prescribed target distribution, but
+    extending this principle to complex three-dimensional surfaces raises two
+    coupled challenges, where the coverage metric must respect intrinsic
+    surface geometry, and the team must achieve complementary coverage without
+    excessive overlap. We present geodesic flow matching, a trajectory
+    optimization framework for multi-agent ergodic coverage directly on
+    embedded triangle-mesh surfaces. We formulate coverage using a Sinkhorn
+    divergence with squared geodesic ground cost and derive its intrinsic
+    reference flow in closed form as a cross-minus-self entropic barycentric
+    projection through Riemannian logarithm maps. This avoids differentiating
+    mesh potentials and yields a smooth tangent guidance field that can be
+    tracked by general off-surface robot dynamics through a surface-output
+    linear-quadratic problem. For robot teams, a single transport problem over
+    the aggregate coverage measure provides the only inter-agent coupling,
+    where spatial partitioning emerges directly from the objective, while
+    control synthesis decouples into independent Riccati solves for each
+    agent, requiring neither task assignment nor Voronoi construction.
+    Experiments on 18 meshes, including complex architectural surfaces,
+    demonstrate robust multi-agent coverage. While other baseline methods
+    remain competitive for uniform targets, their errors increase
+    substantially for concentrated and sharp-support targets. These results
+    establish our method as a geometry-aware and naturally team-compatible
+    foundation for ergodic coverage on complex surfaces.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Benchmark Gallery — Ten Meshes, Four Robots</h2>
+  <p class="sub">
+    Converged four-robot teams on the ten benchmark meshes (Fig. 3 of the
+    paper). Trajectory colors identify robots. Note how spatial partitioning
+    emerges from the shared transport problem alone.
+  </p>
+  <div class="grid" id="gallery-grid"></div>
+</section>
+
+<section class="section">
+  <h2>Landmark-Scale Structures — Teams of 3 to 6</h2>
+  <p class="sub">
+    Uniform inspection of eight landmark scans, two structures per team size
+    (Fig. 6 of the paper). Surface color shows the converged coverage
+    density&nbsp;<span class="legend-swatch"></span>&nbsp;(Viridis,
+    99th-percentile clipped, smoothed at the metric's own blur scale).
+  </p>
+  <div class="grid" id="landmark-grid"></div>
+</section>
+
+<footer>
+  Thank you for your attention
+</footer>
+
+<script src="lib/three.min.js"></script>
+<script src="lib/OrbitControls.js"></script>
+<script src="data/manifest.js"></script>
+<script src="data/rocker_arm.js"></script>
+<script src="data/bunny.js"></script>
+<script src="data/duck.js"></script>
+<script src="data/chair.js"></script>
+<script src="data/cow.js"></script>
+<script src="data/homer.js"></script>
+<script src="data/fuze.js"></script>
+<script src="data/armadillo.js"></script>
+<script src="data/spot.js"></script>
+<script src="data/fandisk.js"></script>
+<script src="data/eiffel_tower.js"></script>
+<script src="data/big_ben.js"></script>
+<script src="data/arc_de_triomphe.js"></script>
+<script src="data/parthenon.js"></script>
+<script src="data/gateway_arch.js"></script>
+<script src="data/white_house.js"></script>
+<script src="data/space_needle.js"></script>
+<script src="data/empire_state_building.js"></script>
+<script src="js/viewer.js"></script>
+</body>
+</html>

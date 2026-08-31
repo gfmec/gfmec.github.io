@@ -1,0 +1,8 @@
+# stale duplicate data export, not referenced by index.html
+data.prebarrier/
+
+# the paper PDF is not served while the submission is under review
+assets/
+
+# local export tooling, not part of the published site
+tools/
